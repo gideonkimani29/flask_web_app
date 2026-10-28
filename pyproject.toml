@@ -1,0 +1,17 @@
+[project]
+name = "flask-web-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gideon Kimani", email = "gideonkimani29@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+flask-web-app = "flask_web_app:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"

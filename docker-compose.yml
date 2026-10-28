@@ -1,0 +1,22 @@
+services:
+  mpesa-api:
+    build: .
+    container_name: mpesa_daraja_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - mpesa_data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./data/mpesa.db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/api/v1/health').raise_for_status()"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  mpesa_data:
